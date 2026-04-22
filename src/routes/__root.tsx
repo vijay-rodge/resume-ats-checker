@@ -29,11 +29,11 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "ResumeIQ — ATS Score & Skill Gap Intelligence" },
+      { name: "description", content: "Get an explainable ATS score, JD keyword match, and skill gap analysis for your resume." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "ResumeIQ — ATS Score & Skill Gap Intelligence" },
+      { property: "og:description", content: "Deterministic resume scoring with section-by-section feedback and rewrite suggestions." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
@@ -52,7 +52,7 @@ export const Route = createRootRoute({
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head>
         <HeadContent />
       </head>
