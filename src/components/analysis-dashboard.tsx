@@ -6,6 +6,7 @@ import {
 import { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis, Cell } from "recharts";
 import type { AnalysisResult, ScoreComponent } from "@/lib/analyzer";
 import { ScoreRing } from "./score-ring";
+import { AtsMeter } from "./ats-meter";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
@@ -119,13 +120,14 @@ export function AnalysisDashboard({ result, fileName, resumeText }: Props) {
         <div className="relative grid gap-8 md:grid-cols-[auto_1fr] md:items-center">
           <ScoreRing score={result.overallScore} label="ATS Score" />
           <div>
-            <div className="text-xs uppercase tracking-widest text-muted-foreground">Analyzing</div>
+            <div className="text-xs uppercase tracking-widest text-muted-foreground">Your resume</div>
             <h2 className="mt-1 text-2xl font-bold text-foreground">{fileName}</h2>
-            <p className="mt-3 max-w-xl text-sm text-muted-foreground">
-              Deterministic, explainable scoring across 5 weighted dimensions. Every score below
-              shows its reasoning and the exact evidence pulled from your resume.
-            </p>
-            <div className="mt-4 flex flex-wrap gap-3 text-xs">
+
+            <div className="mt-5">
+              <AtsMeter score={result.overallScore} />
+            </div>
+
+            <div className="mt-5 flex flex-wrap gap-2 text-xs">
               <div className="rounded-md bg-muted/60 px-2.5 py-1.5">
                 <span className="text-muted-foreground">Words:</span>{" "}
                 <span className="font-semibold text-foreground">{result.meta.wordCount}</span>
@@ -133,10 +135,6 @@ export function AnalysisDashboard({ result, fileName, resumeText }: Props) {
               <div className="rounded-md bg-muted/60 px-2.5 py-1.5">
                 <span className="text-muted-foreground">Bullets:</span>{" "}
                 <span className="font-semibold text-foreground">{result.meta.bullets}</span>
-              </div>
-              <div className="rounded-md bg-muted/60 px-2.5 py-1.5">
-                <span className="text-muted-foreground">Avg / bullet:</span>{" "}
-                <span className="font-semibold text-foreground">{result.meta.avgWordsPerBullet} words</span>
               </div>
               <div className="rounded-md bg-muted/60 px-2.5 py-1.5">
                 <span className="text-muted-foreground">Keyword density:</span>{" "}
@@ -149,7 +147,7 @@ export function AnalysisDashboard({ result, fileName, resumeText }: Props) {
 
       {/* Component breakdown */}
       <section>
-        <SectionHeader icon={<Target className="h-5 w-5" />} title="Score Breakdown" subtitle="5 weighted components, each with reasoning and evidence" />
+        <SectionHeader icon={<Target className="h-5 w-5" />} title="What's behind your score" subtitle="Each piece, why it scored that way, and the proof from your resume" />
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {result.components.map((c) => <ComponentCard key={c.key} c={c} />)}
         </div>
