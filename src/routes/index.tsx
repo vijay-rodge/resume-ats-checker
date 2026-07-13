@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Loader2, Sparkles, Brain } from "lucide-react";
+import { Loader2, Sparkles, Brain, Github, Linkedin, Mail } from "lucide-react";
 import { UploadZone } from "@/components/upload-zone";
 import { AnalysisDashboard } from "@/components/analysis-dashboard";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -41,7 +41,7 @@ function Index() {
     try {
       const parsed = await parseFile(file);
       if (parsed.text.trim().length < 50) {
-        setError("Resume appears empty or unreadable. Try a text-based PDF or DOCX.");
+        setError("ResumeIQ:ATS Compatibility & Skill Gap Analysis");
         setLoading(false);
         return;
       }
@@ -87,7 +87,7 @@ function Index() {
       <main className="mx-auto max-w-6xl px-6 pb-24 pt-12 sm:pt-16">
         <section className="text-center">
           <h1 className="text-balance text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl">
-            Will your resume actually <span className="text-gradient">get through</span>?
+            <span className="text-gradient"> ResumeIQ: ATS Compatibility </span>
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-base text-muted-foreground sm:text-lg">
             Upload it, paste the job description, and find out in seconds — with honest feedback, not vague tips.
@@ -153,8 +153,43 @@ function Index() {
         )}
       </main>
 
-      <footer className="border-t border-border/60 py-5 text-center text-xs text-muted-foreground">
-        Built for job seekers who deserve honest feedback.
+      <footer className="border-t border-border/60 bg-card/30">
+        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-8 sm:flex-row sm:items-center sm:justify-between">
+          <div className="text-center sm:text-left">
+            <div className="text-sm font-semibold text-foreground">ResumeIQ</div>
+            <p className="mt-1 text-xs text-muted-foreground">
+              Built for job seekers who deserve honest, actionable feedback.
+            </p>
+          </div>
+
+          <div className="flex items-center justify-center gap-3">
+            <a
+              href="https://www.linkedin.com/in/vijay-rodge"
+              target="_blank"
+              rel="noreferrer"
+              className="group inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background/70 text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:text-primary hover:shadow-[var(--shadow-glow)]"
+              aria-label="LinkedIn profile"
+            >
+              <Linkedin className="h-4 w-4" />
+            </a>
+            <a
+              href="https://github.com/vijay-rodge"
+              target="_blank"
+              rel="noreferrer"
+              className="group inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background/70 text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:text-primary hover:shadow-[var(--shadow-glow)]"
+              aria-label="GitHub profile"
+            >
+              <Github className="h-4 w-4" />
+            </a>
+            <a
+  href="mailto:vijayrodge116@gmail.com?subject=Contact from resume-ats-checker&body=Hello Vijay,"
+  className="group inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background/70 text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-primary/50 hover:text-primary hover:shadow-[var(--shadow-glow)]"
+  aria-label="Email contact"
+>
+              <Mail className="h-4 w-4" />
+            </a>
+          </div>
+        </div>
       </footer>
     </div>
   );
